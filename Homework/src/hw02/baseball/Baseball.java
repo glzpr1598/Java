@@ -39,7 +39,6 @@ public class Baseball {
 				b = 0;
 				o++;
 				System.out.println("Strike out!");
-				
 			}
 
 			// 4 Ball이면 S, B 초기화

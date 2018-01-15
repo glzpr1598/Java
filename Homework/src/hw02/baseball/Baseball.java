@@ -58,7 +58,43 @@ public class Baseball {
 				System.out.println("게임을 종료합니다.");
 				break;
 			}
-
+			
+			// 입력받은 공에 따라 s, b 카운트
+			switch (ball) {
+				case "s" :
+					s++;
+					break;
+				case "b" :
+					b++;
+					break;
+				default :
+					System.out.println("s 또는 b를 입력하세요.");
+					break;
+			}
+			
+			// 3 Strike면 S, B 초기화하고 아웃 카운트
+			if (s == 3) {
+				s = 0;
+				b = 0;
+				o++;
+			}
+			
+			// 4 Ball이면 S, B 초기화
+			if (b == 4) {
+				s = 0;
+				b = 0;
+			}
+			
+			// 상태 출력
+			System.out.println("S:"+s+", B:"+b+", O:"+o);
+			System.out.println();
+			
+			// 3 Out이면 게임 종료
+			if (o == 3) {
+				System.out.println("게임을 종료합니다.");
+				break;
+			}
+			
 		}
 
 	}

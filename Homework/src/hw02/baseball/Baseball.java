@@ -35,18 +35,18 @@ public class Baseball {
 
 			// 3 Strike면 S, B 초기화하고 아웃 카운트
 			if (s == 3) {
-				System.out.println("Strike out!");
 				s = 0;
 				b = 0;
 				o++;
+				System.out.println("Strike out!");
 				
 			}
 
 			// 4 Ball이면 S, B 초기화
 			if (b == 4) {
-				System.out.println("볼 넷!");
 				s = 0;
 				b = 0;
+				System.out.println("볼 넷!");
 			}
 
 			// 상태 출력

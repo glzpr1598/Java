@@ -2,7 +2,7 @@ package hw01.gugudan;
 
 import java.util.Scanner;
 
-// 원하는 단수를 입력 받아 구구단을 만들어 본다.
+// 원하는 단수를 입력 받아 구구단 출력
 public class Gugudan {
 
 	public static void main(String[] args) {

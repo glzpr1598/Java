@@ -14,6 +14,11 @@ public class Main {
 		Employee<Info> emp = new Employee<>();
 		emp.setT(info);
 		
+		System.out.println(emp.getT().getEmp_no());
+		System.out.println(emp.getT().getName());
+		//...
+		System.out.println(emp.getT().getHobby());
+		
 	}
 
 }

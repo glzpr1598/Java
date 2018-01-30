@@ -1,4 +1,4 @@
-package chap10.ex02.theadName;
+package chap10.ex03.theadName;
 
 public class Main {
 

@@ -1,10 +1,11 @@
-package chap10.ex16.blocking;
+package chap10.ex16.threadBlocking;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+//Future를 get() 하는 것은 join()과 같은 역할(blocking)
 public class NoResult {
 	
 	public static void main(String[] args) throws InterruptedException, ExecutionException {

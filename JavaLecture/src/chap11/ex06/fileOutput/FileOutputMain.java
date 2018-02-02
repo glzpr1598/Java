@@ -11,7 +11,7 @@ public class FileOutputMain {
 		
 		// 파일 경로
 		String oriPath = "C:/img/image.gif"; // 원본 경로
-		String tarPath = "C:/img/copy_image.gif"; // 복사본 경로
+		String tarPath = "C:/img/image_copy.gif"; // 복사본 경로
 		
 		// Stream 연결
 		FileInputStream fis = new FileInputStream(oriPath); // File 객체를 만들지 않고 경로명을 넣어도 됨

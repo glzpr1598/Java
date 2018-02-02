@@ -9,7 +9,7 @@ import java.util.Scanner;
 // 입력된 내용은 계속 추가되도록(append)
 public class Main {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException  {
 		
 		// 파일 경로
 		String path = "C:/img/sample.txt";
@@ -18,6 +18,7 @@ public class Main {
 		File file = new File(path);
 		if (!file.exists()) { // 파일이 없으면 생성
 			file.createNewFile();
+			System.out.println("파일 생성.");
 		}
 		
 		// Scanner 정의
@@ -29,7 +30,9 @@ public class Main {
 		// 데이터 읽기, 쓰기
 		System.out.print("입력할 내용 : ");
 		String data = sc.nextLine();
+		data += "\r\n"; // 줄바꿈
 		fw.write(data);
+		System.out.println("입력 완료.");
 		
 		// 자원 닫기
 		sc.close();

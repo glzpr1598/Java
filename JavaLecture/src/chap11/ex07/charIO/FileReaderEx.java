@@ -1,6 +1,5 @@
 package chap11.ex07.charIO;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 public class FileReaderEx {

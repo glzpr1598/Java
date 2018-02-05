@@ -17,6 +17,8 @@ public class ScanMain {
 		System.out.print("실수 입력 : ");
 		System.out.println(sc.nextDouble()); // 실수 출력
 		
+		sc.close();
+		
 	}
 
 }

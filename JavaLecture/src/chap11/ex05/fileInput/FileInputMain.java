@@ -2,7 +2,6 @@ package chap11.ex05.fileInput;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 // 파일을 InputStream을 통해 콘솔로 출력

@@ -1,7 +1,6 @@
 package chap11.ex07.charIO;
 
 import java.io.FileWriter;
-import java.io.IOException;
 
 // 파일에 데이터 입력
 public class FileWriterEx {

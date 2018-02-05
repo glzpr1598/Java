@@ -1,7 +1,6 @@
 package chap11.ex06.fileOutput;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 // 파일 복사(Input, Output)

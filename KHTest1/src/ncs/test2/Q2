@@ -1,0 +1,62 @@
+배점 [25.0점]
+			2.	다음과 같은 조건을 만족하는 프로그램을 작성하시오   
+			서로 다른 Book 객체를 생성하여 각각의 객체 정보와 모든 책 가격의 합을 출력하는  프로그램을 작성한다.  
+
+			1. 사용 데이터 
+			아래와 같이 Book Object를 초기화 생성하여 프로그램을 동작시킨다. 
+
+			category  bookName  bookPrice(원)  bookDiscountRate(%) 
+			   IT         SQL Plus        50000               5 
+			   IT         Java 2.0         40000               3 
+			   IT         JSP Servlet     60000               6 
+			 Nobel     davincicode    30000              10  
+			 Nobel     cloven hoof    50000              15
+
+			2. 구현 클래스 다이어그램 
+			Book.java
+			- category:String 
+			- bookName:String 
+			- bookPrice:double 
+			- bookDiscountRate:double   
+			+Book() +Book(category:StringbookName:String, bookPrice:double, bookDiscountRate:double) 
+			+getXXX() 
+			+setXXX()    
+
+			BookTest.java
+			main(args:String):void
+
+			3. 구현 클래스 설명 
+			Package명   클래스명      메소드        설명
+			ncs.test2      Book          +Book()      기본 생성자 
+			                                 +Book(category:String, bookName:String, bookPrice:double,  
+			                                          bookDiscountRate:double) 
+			                                                 4개의 초기값을 받는 생성자
+			                 BookTest    +main(String args[]): void main 
+			                                                 함수 안에서 Book 타입의 배열을 선언하여 동작시킨다
+
+			* class 명과 method 명은 변경하지 않는다.  
+			* 위에 선언한 필드와 메소드만을 이용한다.  
+			* getXXX/setXXX는 직접 만들어서 사용한다.
+
+			4. BookTest 클래스 구현 내용
+			Book 객체를 담을 수 있는 배열을 선언 하여 5개의 Book 객체를 생성 하여 담는다.
+
+			public class BookTest {
+			     public static void main(String args[]) {
+			       Book bookArray [] = new Book[5];
+
+			      // Book 객체를 5개 생성하여 배열에 넣는다 .
+			      // 배열에 있는 객체 정보를 실행결과 형식으로 모두 출력한다. – for loop를 이용할 것 
+			      // 합계를 출력한다 . 
+			} 
+			}  
+
+			5. 실행 결과  
+			실행 결과 예)            
+			IT SQL Plus       50000.0원  5.0% 
+			IT Java 2.0        40000.0원  3.0% 
+			IT JSP Servlet     60000.0원  6.0% 
+			Nobel davincicode 30000.0원  10.0% 
+			Nobel cloven hoof 50000.0원  15.0% 
+
+			책 가격의 합: 230000.0원 

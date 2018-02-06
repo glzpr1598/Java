@@ -36,9 +36,9 @@ public class HashMapEx {
 		// 방법 1. key만 Set으로 가져와서 iterator로 쪼갬.
 		System.out.println("모든 데이터 출력");
 		Set<String> keySet = map.keySet();
-		Iterator<String> ketIter = keySet.iterator();
-		while (ketIter.hasNext()) {
-			String key = ketIter.next();
+		Iterator<String> keyIter = keySet.iterator();
+		while (keyIter.hasNext()) {
+			String key = keyIter.next();
 			System.out.println(key + " : " + map.get(key));
 		}
 		

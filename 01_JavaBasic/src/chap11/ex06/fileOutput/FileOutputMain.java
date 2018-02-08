@@ -23,9 +23,10 @@ public class FileOutputMain {
 //		}
 		
 		// 데이터 읽고 쓰기(버퍼 이용)
+		int num = 0;
 		byte[] buffer = new byte[1024]; // 1KB 단위
-		while (fis.read(buffer) != -1) {
-			fos.write(buffer);
+		while ((num = fis.read(buffer)) != -1) { // 바이트 수 리턴
+			fos.write(buffer, 0, num); // 인자 : 데이터, 시작위치, 바이트 수
 		}
 
 		// Stream 닫기

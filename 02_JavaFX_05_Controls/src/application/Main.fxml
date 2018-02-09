@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="400.0">
+         <children>
+            <Label fx:id="label1" layoutX="85.0" layoutY="67.0" text="성별" />
+            <RadioButton fx:id="male" layoutX="85.0" layoutY="95.0" mnemonicParsing="false" text="남성">
+               <toggleGroup>
+                  <ToggleGroup fx:id="gender" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="female" layoutX="85.0" layoutY="120.0" mnemonicParsing="false" text="여성" toggleGroup="$gender" />
+            <Button layoutX="85.0" layoutY="147.0" mnemonicParsing="false" onAction="#genderSel" text="Button" />
+            <Label fx:id="label2" layoutX="242.0" layoutY="67.0" text="취미" />
+            <CheckBox fx:id="movie" layoutX="242.0" layoutY="95.0" mnemonicParsing="false" text="영화보기" />
+            <CheckBox fx:id="game" layoutX="242.0" layoutY="123.0" mnemonicParsing="false" text="게임하기" />
+            <CheckBox fx:id="fishing" layoutX="242.0" layoutY="151.0" mnemonicParsing="false" text="낚시하기" />
+            <Button layoutX="249.0" layoutY="181.0" mnemonicParsing="false" onAction="#hobbySel" text="Button" />
+            <Label fx:id="result1" alignment="CENTER" layoutX="65.0" layoutY="185.0" prefHeight="15.0" prefWidth="93.0" />
+            <Label fx:id="result2" alignment="CENTER" layoutX="171.0" layoutY="217.0" prefHeight="15.0" prefWidth="207.0" />
+            <Label fx:id="label3" alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="279.0" text="OFF" textAlignment="CENTER" AnchorPane.bottomAnchor="106.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="279.0" AnchorPane.topAnchor="279.0" />
+            <ToggleButton fx:id="toggleBtn" layoutX="90.0" layoutY="305.0" mnemonicParsing="false" onAction="#toggle" text="OFF" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="271.0" AnchorPane.topAnchor="305.0" />
+            <Accordion layoutX="165.0" layoutY="245.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

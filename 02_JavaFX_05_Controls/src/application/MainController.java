@@ -32,6 +32,7 @@ public class MainController implements Initializable {
 		System.out.println("FXML 로딩 완료");
 	}
 
+	// RadioButton
 	public void genderSel() {
 		if (male.isSelected()) {
 			result1.setText(male.getText());
@@ -40,6 +41,7 @@ public class MainController implements Initializable {
 		}
 	}
 
+	// CheckBox
 	public void hobbySel() {
 		String str = " ";
 		if (movie.isSelected()) {
@@ -54,13 +56,12 @@ public class MainController implements Initializable {
 		result2.setText(str);
 	}
 
+	// ToggleButton
 	public void toggle() {
 		if (toggleBtn.isSelected()) {
 			label3.setText("ON");
-			toggleBtn.setText("ON");
 		} else {
 			label3.setText("OFF");
-			toggleBtn.setText("OFF");
 		}
 	}
 	

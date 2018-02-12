@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <top>
+      <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="400.0" text="항목을 선택하세요." textAlignment="CENTER" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <ListView fx:id="listView" onMouseClicked="#itemClick" prefHeight="313.0" prefWidth="400.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="application.MainController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="399.0" minWidth="10.0" prefWidth="83.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="436.0" minWidth="10.0" prefWidth="294.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="23.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="61.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="134.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="193.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="258.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="290.0" minHeight="10.0" prefHeight="232.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label alignment="CENTER" prefHeight="38.0" prefWidth="89.0" text="제  목" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <Label alignment="CENTER" prefHeight="38.0" prefWidth="89.0" text="비밀번호" textAlignment="CENTER" GridPane.rowIndex="1" />
+      <Label alignment="CENTER" prefHeight="38.0" prefWidth="89.0" text="공개여부" textAlignment="CENTER" GridPane.rowIndex="2" />
+      <Label alignment="CENTER" prefHeight="38.0" prefWidth="89.0" text="게시종료일" textAlignment="CENTER" GridPane.rowIndex="3" />
+      <Label alignment="CENTER" prefHeight="38.0" prefWidth="89.0" text="내  용" textAlignment="CENTER" GridPane.rowIndex="4" />
+      <Button mnemonicParsing="false" onAction="#save" text="저  장" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+      <TextField fx:id="title" GridPane.columnIndex="1" />
+      <PasswordField fx:id="passwd" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <ComboBox fx:id="publicCombo" prefHeight="25.0" prefWidth="90.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </ComboBox>
+      <DatePicker fx:id="endDate" prefHeight="26.0" prefWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextArea fx:id="content" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+   </children>
+</GridPane>

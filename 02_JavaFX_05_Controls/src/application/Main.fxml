@@ -29,7 +29,7 @@
             <Label fx:id="result1" alignment="CENTER" layoutX="65.0" layoutY="185.0" prefHeight="15.0" prefWidth="93.0" />
             <Label fx:id="result2" alignment="CENTER" layoutX="171.0" layoutY="217.0" prefHeight="15.0" prefWidth="207.0" />
             <Label fx:id="label3" alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="279.0" text="OFF" textAlignment="CENTER" AnchorPane.bottomAnchor="106.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="279.0" AnchorPane.topAnchor="279.0" />
-            <ToggleButton fx:id="toggleBtn" layoutX="90.0" layoutY="305.0" mnemonicParsing="false" onAction="#toggle" text="OFF" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="271.0" AnchorPane.topAnchor="305.0" />
+            <ToggleButton fx:id="toggleBtn" layoutX="58.0" layoutY="304.0" mnemonicParsing="false" onAction="#toggle" prefHeight="23.0" prefWidth="103.0" text="ToggleButton" AnchorPane.bottomAnchor="73.0" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="239.0" AnchorPane.topAnchor="304.0" />
             <Accordion layoutX="165.0" layoutY="245.0" />
          </children>
       </AnchorPane>

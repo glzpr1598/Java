@@ -35,7 +35,7 @@ public class Server {
 				// 5. InputSteam과 OutputStream 준비
 				InputStream is = socket.getInputStream();
 				OutputStream os = socket.getOutputStream();
-				InputStreamReader isr = new InputStreamReader(is);
+				InputStreamReader isr = new InputStreamReader(is, "UTF-8");
 				OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
 
 				// 6. IS와 OS로 데이터 주고받기

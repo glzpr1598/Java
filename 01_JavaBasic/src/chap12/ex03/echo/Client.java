@@ -23,7 +23,7 @@ public class Client {
 			// 3. IS, OS 준비
 			InputStream is = socket.getInputStream();
 			OutputStream os = socket.getOutputStream();
-			InputStreamReader isr = new InputStreamReader(is);
+			InputStreamReader isr = new InputStreamReader(is, "UTF-8");
 			OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
 
 			// 4. 데이터 전송

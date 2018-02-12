@@ -4,7 +4,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class MultiServer {
+public class Server {
 
 	static ArrayList<Socket> arrList = new ArrayList<>();
 

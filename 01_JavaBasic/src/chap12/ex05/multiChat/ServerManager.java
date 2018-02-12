@@ -38,7 +38,7 @@ public class ServerManager extends Thread {
 		System.out.println(msg);
 
 		// 모든 클라이언트에게 메시지 전송
-		for (Socket temp : MultiServer.arrList) {
+		for (Socket temp : Server.arrList) {
 			out = new DataOutputStream(temp.getOutputStream());
 			out.writeUTF(msg);
 			out.flush();

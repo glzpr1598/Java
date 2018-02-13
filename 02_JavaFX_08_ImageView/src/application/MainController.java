@@ -40,7 +40,7 @@ public class MainController implements Initializable {
 			Image image = new Image(bis);
 			// Image image = new Image("이미지 주소"); // 이미지 주소로도 불러올 수 있음.
 			imageView.setImage(image);
-			imageView.setFitHeight(image.getHeight()); // 원본 크기로 가져오기
+			imageView.setFitHeight(image.getHeight()); // 이미지 크기 지정(원본 크기)
 			imageView.setFitWidth(image.getWidth());
 			bis.close();
 		} catch (Exception e) {

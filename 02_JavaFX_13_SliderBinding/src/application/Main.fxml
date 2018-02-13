@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="application.MainController">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.0" minWidth="10.0" prefWidth="60.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="270.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="60.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="205.0" minHeight="10.0" prefHeight="160.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="266.0" minHeight="10.0" prefHeight="137.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="145.0" minHeight="0.0" prefHeight="103.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Slider fx:id="slider" GridPane.columnIndex="1" />
+      <TextField fx:id="textField" prefHeight="23.0" prefWidth="177.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+         </GridPane.margin>
+      </TextField>
+   </children>
+</GridPane>

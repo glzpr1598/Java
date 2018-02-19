@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -16,27 +17,27 @@ import javafx.scene.input.KeyCode;
 public class MultiClientController implements Initializable {
 
 	@FXML
-	TextArea clientWin;
+	TextArea textAreaQuestion; // 문제 창
 	@FXML
-	TextField chatWin;
+	TextArea textAreaChat; // 채팅 창
+	@FXML
+	TextArea textAreaScore; // 점수 창
+	@FXML
+	TextField textFieldInput; // 사용자 입력 창
+	@FXML
+	Label labelTime; // 남은 시간
 
 	Socket socket = null;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		startClient();
-	}
-
-	public void startClient() {
 		Thread th = new Thread() {
 			@Override
 			public void run() {
-				// 1. 소켓 생성 + 연결 요청
 				try {
-					System.out.println(MultiServerController.list.size());
+					// 1. 소켓 생성 + 연결 요청
 					socket = new Socket("127.0.0.1", 5252);
-					// 2. 할일 하기 - 스레드 생성 및 실행
-					clientWin.appendText("연결 수락\n");
+					// 2. 스레드 생성 및 실행
 					ClientSender sender = new ClientSender(socket);
 					ClientReceiver receiver = new ClientReceiver(socket);
 					sender.start();
@@ -44,11 +45,7 @@ public class MultiClientController implements Initializable {
 
 				} catch (Exception e) {
 					e.printStackTrace();
-					try {
-						socket.close();// 문제 발생시 소켓 종료
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+					System.out.println("서버에 접속할 수 없습니다.");
 				}
 			}
 		};
@@ -59,9 +56,11 @@ public class MultiClientController implements Initializable {
 		Socket socket;
 		DataOutputStream out;
 
+		// 생성자
 		public ClientSender(Socket socket) {
 			this.socket = socket;
 			try {
+				// 출력 스트림 생성
 				out = new DataOutputStream(socket.getOutputStream());
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -70,24 +69,21 @@ public class MultiClientController implements Initializable {
 
 		@Override
 		public void run() {
-
 			while (out != null) {
-				chatWin.setOnKeyPressed((event) -> {
-					if (event.getCode() == KeyCode.ENTER) {
+				textFieldInput.setOnKeyPressed((event) -> {
+					// 엔터기를 입력하고 텍스트가 공백이 아니면
+					if (event.getCode() == KeyCode.ENTER && !textFieldInput.getText().equals("")) {
 						try {
-							if (!chatWin.getText().equals("")) {
-								out.writeUTF(chatWin.getText());// 입력 내용을 전송
-							} else {
-							}
-							chatWin.clear();
+							out.writeUTF(textFieldInput.getText()); // 텍스트 전송
+							textFieldInput.clear();
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
 					}
 				});
 			}
-
 		}
+		
 	}
 
 	class ClientReceiver extends Thread {
@@ -95,9 +91,11 @@ public class MultiClientController implements Initializable {
 		Socket socket;
 		DataInputStream in;
 
+		// 생성자
 		public ClientReceiver(Socket socket) {
 			this.socket = socket;
 			try {
+				// 입력 스트림 생성
 				in = new DataInputStream(socket.getInputStream());
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -108,10 +106,20 @@ public class MultiClientController implements Initializable {
 		public void run() {
 			while (in != null) {
 				try {
-					clientWin.appendText(in.readUTF());// 받아온 내용을 출력
+					String msg = in.readUTF(); // 입력받은 메시지
+					// " > " 을 포함하는 경우(시스템 메시지가 아닌 경우)
+					if (msg.contains(" > ")) {
+						String[] sub = msg.split(" > ");
+						int port = Integer.parseInt(sub[0]);
+						if (socket.getLocalPort() == port) // 내가 보낸 메시지인 경우
+							textAreaChat.appendText("(나)"); // 앞에 "(나)"를 붙임
+						textAreaChat.appendText(msg); // 메시지 출력
+					}
+					else { // 시스템 메시지인 경우 바로 출력
+						textAreaChat.appendText(msg);
+					}
 				} catch (IOException e) {
 					e.printStackTrace();
-					break;// 프로그램을 멈춘다.
 				}
 			}
 		}

@@ -8,18 +8,18 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MultiClientController">
    <children>
-      <TextField fx:id="chatWin" layoutX="34.0" layoutY="555.0" prefHeight="23.0" prefWidth="333.0" />
-      <TextArea fx:id="clientWin" layoutX="34.0" layoutY="143.0" prefHeight="384.0" prefWidth="333.0" />
+      <TextField fx:id="textFieldInput" layoutX="34.0" layoutY="555.0" prefHeight="23.0" prefWidth="333.0" />
+      <TextArea fx:id="textAreaChat" editable="false" layoutX="34.0" layoutY="143.0" prefHeight="384.0" prefWidth="333.0" />
       <Label layoutX="35.0" layoutY="533.0" text="입력" />
       <Label layoutX="35.0" layoutY="120.0" text="채팅" />
-      <TextArea layoutX="34.0" layoutY="43.0" prefHeight="67.0" prefWidth="333.0" />
+      <TextArea fx:id="textAreaQuestion" editable="false" layoutX="34.0" layoutY="43.0" prefHeight="67.0" prefWidth="333.0" />
       <Label layoutX="32.0" layoutY="21.0" text="문제" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="380.0" layoutY="43.0" prefHeight="67.0" prefWidth="106.0" text="TIMER">
+      <Label fx:id="labelTime" alignment="CENTER" contentDisplay="CENTER" layoutX="380.0" layoutY="43.0" prefHeight="67.0" prefWidth="106.0" text="TIMER">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <TextArea layoutX="380.0" layoutY="143.0" prefHeight="200.0" prefWidth="106.0" />
+      <TextArea fx:id="textAreaScore" editable="false" layoutX="380.0" layoutY="143.0" prefHeight="200.0" prefWidth="106.0" />
       <Label layoutX="380.0" layoutY="120.0" text="점수" />
    </children>
 </AnchorPane>

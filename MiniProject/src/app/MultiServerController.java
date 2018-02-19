@@ -59,27 +59,34 @@ public class MultiServerController implements Initializable{
 		DataInputStream in;
 		DataOutputStream out;
 		public ServerManager(Socket socket) throws Exception {
-			this.socket =socket;		
+			this.socket =socket;
 			try {
 				in = new DataInputStream(socket.getInputStream());
-				sendMsg(socket.getPort()+" 님이 입장 했습니다. ");
+				sendMsg(socket.getPort() + "님이 입장 했습니다. ");
 				sendMsg("현재 접속자 : "+list.size()+"명");
 			} catch (IOException e) {
 				e.printStackTrace();
-				
-			}		
+			}
 		}
 
 		@Override
-		public void run() {		
+		public void run() {
+			int name = socket.getPort();
 			try {
 				while(in!=null) {
 					String text = in.readUTF();
 					sendMsg(socket.getPort()+"> "+text);
-
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
+			} finally {
+				System.exit(0);
+//				try {
+//					sendMsg(name + "님이 퇴장했습니다. ");
+//					sendMsg("프로그램을 종료합니다.");
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
 			}
 		}
 		

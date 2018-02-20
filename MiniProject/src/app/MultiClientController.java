@@ -71,7 +71,7 @@ public class MultiClientController implements Initializable {
 		public void run() {
 			while (out != null) {
 				textFieldInput.setOnKeyPressed((event) -> {
-					// 엔터기를 입력하고 텍스트가 공백이 아니면
+					// 엔터키를 입력하고 텍스트가 공백이 아니면
 					if (event.getCode() == KeyCode.ENTER && !textFieldInput.getText().equals("")) {
 						try {
 							out.writeUTF(textFieldInput.getText()); // 텍스트 전송
@@ -83,7 +83,7 @@ public class MultiClientController implements Initializable {
 				});
 			}
 		}
-		
+
 	}
 
 	class ClientReceiver extends Thread {
@@ -107,17 +107,32 @@ public class MultiClientController implements Initializable {
 			while (in != null) {
 				try {
 					String msg = in.readUTF(); // 입력받은 메시지
-					// " > " 을 포함하는 경우(시스템 메시지가 아닌 경우)
-					if (msg.contains(" > ")) {
-						String[] sub = msg.split(" > ");
-						int port = Integer.parseInt(sub[0]);
-						if (socket.getLocalPort() == port) // 내가 보낸 메시지인 경우
-							textAreaChat.appendText("(나)"); // 앞에 "(나)"를 붙임
-						textAreaChat.appendText(msg); // 메시지 출력
+					if (msg.charAt(0) == 'C') { // 입력받은 메시지가 채팅창에 해당하는 경우
+						msg = msg.substring(1); // 첫 글자 제거
+						// " > " 을 포함하는 경우(시스템 메시지가 아닌 경우)
+						if (msg.contains(" > ")) {
+							String[] sub = msg.split(" > ");
+							int port = Integer.parseInt(sub[0]);
+							if (socket.getLocalPort() == port) // 내가 보낸 메시지인 경우
+								textAreaChat.appendText("(나)"); // 앞에 "(나)"를 붙임
+							textAreaChat.appendText(msg); // 메시지 출력
+						}
+						else { // 시스템 메시지인 경우 바로 출력
+							textAreaChat.appendText(msg);
+						}
+					} else if (msg.charAt(0) == 'S') { // 입력받은 메시지가 점수일 경우
+						msg = msg.substring(1); // 첫 글자 제거
+						textAreaScore.setText(msg);
+					} else if (msg.charAt(0) == 'Q') { // 입력받은 메시지가 문제일 경우
+						msg = msg.substring(1); // 첫 글자 제거
+						textAreaQuestion.setText(msg);
+					} else if (msg.charAt(0) == 'T') { // 입력받은 메시지가 시간일 경우
+						msg = msg.substring(1); // 첫 글자 제거
+						labelTime.setText(msg);
+					}else {
+						textAreaChat.appendText("메시지 수신 에러");
 					}
-					else { // 시스템 메시지인 경우 바로 출력
-						textAreaChat.appendText(msg);
-					}
+					
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

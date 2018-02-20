@@ -26,10 +26,10 @@ public class MultiServerController implements Initializable {
 	static final int ENDSCORE = 5; // 게임 종료 점수
 	static final int GAME = 1; // 게임 중
 	static final int READY = 0; // 준비 중
-//	static final int TIME_LIMIT = 10; // 제한 시간
+	static final int TIME_LIMIT = 10; // 제한 시간
 	
 	static int state = READY; // 현재 게임 상태
-//	static int INIT_TIME = 0; // 시간 초기화 플래그
+	static int INIT_TIME = 0; // 시간 초기화 플래그
 
 	static ArrayList<Socket> socketList = new ArrayList<Socket>(); // 소켓 리스트
 	static HashMap<Integer, Integer> scoreMap = new HashMap<>(); // 점수 리스트
@@ -157,8 +157,8 @@ public class MultiServerController implements Initializable {
 		// 게임 시작
 		public void startGame() {
 			sendMsg("C[게임을 시작합니다.]");
-//			Timer timer = new Timer();
-//			timer.start();
+			Timer timer = new Timer();
+			timer.start();
 			initialize(); // 문제 번호, 점수 초기화
 			sendScore(); // 점수 보내기
 			loadQuestion(); // 문제 가져오기
@@ -198,7 +198,7 @@ public class MultiServerController implements Initializable {
 		// 문제 보내기
 		public void sendQuestion() {
 			try {
-//				INIT_TIME = 1;
+				INIT_TIME = 1;
 				Question question = questionList.get(curQuestion);
 				sendMsg("Q[영화] " + question.q);
 			} catch (IndexOutOfBoundsException e) { // 문제 끝
@@ -221,7 +221,7 @@ public class MultiServerController implements Initializable {
 
 	}
 
-	/*public class Timer extends Thread {
+	public class Timer extends Thread {
 			int time;
 			DataOutputStream out;
 			
@@ -278,6 +278,6 @@ public class MultiServerController implements Initializable {
 				}
 			}
 		
-		}*/
+		}
 	
 }

@@ -14,12 +14,13 @@
       <Label layoutX="35.0" layoutY="120.0" text="채팅" />
       <TextArea fx:id="textAreaQuestion" editable="false" layoutX="34.0" layoutY="43.0" prefHeight="67.0" prefWidth="333.0" />
       <Label layoutX="32.0" layoutY="21.0" text="문제" />
-      <Label fx:id="labelTime" alignment="CENTER" contentDisplay="CENTER" layoutX="380.0" layoutY="43.0" prefHeight="67.0" prefWidth="106.0" text="TIMER">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
       <TextArea fx:id="textAreaScore" editable="false" layoutX="380.0" layoutY="143.0" prefHeight="200.0" prefWidth="106.0" />
       <Label layoutX="380.0" layoutY="120.0" text="점수" />
+      <TextArea fx:id="textAreaTime" editable="false" layoutX="380.0" layoutY="43.0" prefHeight="67.0" prefWidth="106.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextArea>
+      <Label layoutX="380.0" layoutY="21.0" text="남은 시간" />
    </children>
 </AnchorPane>

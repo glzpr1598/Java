@@ -23,9 +23,9 @@ public class MultiClientController implements Initializable {
 	@FXML
 	TextArea textAreaScore; // 점수 창
 	@FXML
-	TextField textFieldInput; // 사용자 입력 창
+	TextArea textAreaTime; // 남은 시간
 	@FXML
-	Label labelTime; // 남은 시간
+	TextField textFieldInput; // 사용자 입력 창
 
 	Socket socket = null;
 
@@ -128,7 +128,7 @@ public class MultiClientController implements Initializable {
 						textAreaQuestion.setText(msg);
 					} else if (msg.charAt(0) == 'T') { // 입력받은 메시지가 시간일 경우
 						msg = msg.substring(1); // 첫 글자 제거
-						labelTime.setText(msg);
+						textAreaTime.setText(msg);
 					}else {
 						textAreaChat.appendText("메시지 수신 에러");
 					}

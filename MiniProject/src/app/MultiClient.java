@@ -13,7 +13,7 @@ public class MultiClient extends Application {
 			Parent root = FXMLLoader.load(getClass().getResource("MultiClient.fxml"));
 			Scene scene = new Scene(root, 500, 600);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setTitle("클라이언트");
+			primaryStage.setTitle("초성 퀴즈");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {

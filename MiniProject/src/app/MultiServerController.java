@@ -26,8 +26,9 @@ public class MultiServerController implements Initializable {
 	static final int ENDSCORE = 5; // 게임 종료 점수
 	static final int GAME = 1; // 게임 중
 	static final int READY = 0; // 준비 중
-	static final int TIME_LIMIT = 10; // 제한 시간
-	
+	static final int TIME_LIMIT = 10000; // 제한 시간(ms)
+	static final int TIME_UNIT = 100; // 시간 카운트 단위(ms)
+
 	static int state = READY; // 현재 게임 상태
 	static int INIT_TIME = 0; // 시간 초기화 플래그
 
@@ -88,7 +89,7 @@ public class MultiServerController implements Initializable {
 				// 입력 스트림 생성
 				in = new DataInputStream(socket.getInputStream());
 				sendMsg("C[" + socket.getPort() + "님이 입장하셨습니다.]");
-				sendMsg("C[현재 접속자 : " + socketList.size() + "명]");
+				sendMsg("C[" + USERS + "명이 되면 게임을 시작합니다. 현재 접속자 : " + socketList.size() + "명]");
 				// 게임 중인 경우
 				if (state == GAME) {
 					startGame();
@@ -110,13 +111,13 @@ public class MultiServerController implements Initializable {
 					// 게임 중이면 정답 확인
 					if (state == GAME) {
 						if (text.equals(questionList.get(curQuestion).a)) { // 정답인 경우
-							sendMsg("C[정답입니다!]");
+							sendMsg("C[정답!]");
 							// 점수 증가
 							int score = scoreMap.get(name);
 							scoreMap.put(name, ++score);
 							sendScore(); // 점수 보내기
 							if (score == ENDSCORE) { // 게임이 끝난 경우(점수 도달)
-								sendMsg("C[우승자 : " + name + "]");
+								sendMsg("C[게임이 종료되었습니다. 우승자 : " + name + "]");
 								state = READY;
 								continue;
 							}
@@ -132,8 +133,7 @@ public class MultiServerController implements Initializable {
 				socketList.remove(socket); // 소켓 리스트에서 제거
 				scoreMap.remove(socket.getPort()); // 점수 맵에서 제거
 				sendMsg("C[" + name + "님이 퇴장하셨습니다.]");
-				sendMsg("C[게임이 종료되었습니다.]");
-				sendMsg("C[현재 접속자 : " + socketList.size() + "명]");
+				sendMsg("C[" + USERS + "명이 되면 게임을 시작합니다. 현재 접속자 : " + socketList.size() + "명]");
 				state = READY; // 게임 준비 상태
 			}
 		}
@@ -222,62 +222,57 @@ public class MultiServerController implements Initializable {
 	}
 
 	public class Timer extends Thread {
-			int time;
-			DataOutputStream out;
-			
-			@Override
-			public void run() {
-				while (true) {
-					if (state == GAME) {
-						time = TIME_LIMIT;
-						while (time > 0) {
-							try {
-								if (INIT_TIME == 1) { // 시간을 초기화해야하는 경우
-									time = TIME_LIMIT;
-									INIT_TIME = 0;
-								}
-								Thread.sleep(1000);
-								time--;
-								sendTime("T"+time);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-						// 시간 초과, 다음 문제 출제
-						curQuestion++;
-						try {
-							Question question = questionList.get(curQuestion);
-							sendTime("Q[영화] " + question.q);
-						} catch (IndexOutOfBoundsException e) { // 문제 끝
-							sendTime("C[무승부]");
-							state = READY;
-						}
-					} else {
-						try {
-							Thread.sleep(1);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-					}
-					
-				}
-			}
+		int time;
+		DataOutputStream out;
 
-			public void sendTime(String msg) {
-				serverWin.appendText(msg + "\n");
-				// 1. 모든 소켓(클라이언트)
-				for (Socket s : MultiServerController.socketList) {
-						// 2. 클라이언트별 출력 스트림
-						try {
-							out = new DataOutputStream(s.getOutputStream());
-							out.writeUTF(msg + "\n"); // 3. 메시지 전송
-//							out.flush();
-						} catch (IOException e) {
-							e.printStackTrace();
+		@Override
+		public void run() {
+			while (true) {
+				time = TIME_LIMIT; // 시간 초기화
+				while (time > 0) {
+					try {
+						if (state == READY) { // 게임이 끝나면
+							sendTime("T0"); // 0초로 표시
+							return; // 타이머 종료
 						}
+						if (INIT_TIME == 1) { // 시간을 초기화해야하는 경우
+							time = TIME_LIMIT; // 시간 초기화
+							INIT_TIME = 0; // 플래그 초기화
+						}
+						Thread.sleep(TIME_UNIT);
+						time -= TIME_UNIT;
+						sendTime("T" + (time / 1000)); // 초 단위로 표시
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				// 시간 초과, 다음 문제 출제
+				curQuestion++;
+				try {
+					Question question = questionList.get(curQuestion);
+					sendTime("Q[영화] " + question.q);
+				} catch (IndexOutOfBoundsException e) { // 문제 끝
+					sendTime("C[무승부]");
+					state = READY;
 				}
 			}
-		
 		}
-	
+
+		public void sendTime(String msg) {
+			serverWin.appendText(msg + "\n");
+			// 1. 모든 소켓(클라이언트)
+			for (Socket s : MultiServerController.socketList) {
+				// 2. 클라이언트별 출력 스트림
+				try {
+					out = new DataOutputStream(s.getOutputStream());
+					out.writeUTF(msg + "\n"); // 3. 메시지 전송
+					out.flush();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+	}
+
 }

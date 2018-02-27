@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ConnectController">
+   <children>
+      <TextField fx:id="ipNum" layoutX="76.0" layoutY="14.0" prefHeight="23.0" prefWidth="116.0" promptText="IP" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="108.0" />
+      <TextField fx:id="portNum" layoutX="76.0" layoutY="55.0" prefHeight="23.0" prefWidth="116.0" promptText="Port" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="108.0" />
+      <TextField fx:id="nickName" layoutX="76.0" layoutY="93.0" prefHeight="23.0" prefWidth="96.0" promptText="ID" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="108.0" />
+      <Button fx:id="btn" layoutX="18.0" layoutY="158.0" mnemonicParsing="false" onAction="#connectServer" prefHeight="23.0" prefWidth="70.0" text="접 속" />
+      <Button fx:id="endBtn" layoutX="102.0" layoutY="158.0" mnemonicParsing="false" onAction="#end" prefHeight="23.0" prefWidth="70.0" text="종 료" />
+      <Label layoutX="5.0" layoutY="18.0" text="서버아이피" AnchorPane.leftAnchor="5.0" />
+      <Label layoutX="11.0" layoutY="59.0" text="서버포트" AnchorPane.leftAnchor="11.0" />
+      <Label layoutX="17.0" layoutY="97.0" text="아이디" AnchorPane.leftAnchor="17.0" />
+      <Label fx:id="ipLabel" layoutX="177.0" layoutY="18.0" />
+      <Label fx:id="portLabel" layoutX="177.0" layoutY="59.0" />
+      <Label fx:id="idLabel" layoutX="177.0" layoutY="97.0" />
+   </children>
+</AnchorPane>
